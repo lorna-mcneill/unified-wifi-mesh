@@ -38,15 +38,19 @@
 #include "em_cmd_agent.h"
 #include "em_orch_agent.h"
 #include "util.h"
+#ifdef AL_SAP
 #include "al_service_access_point.hpp"
+#endif
 
 #define RETRY_SLEEP_INTERVAL_IN_MS 1000
 #define SOCKET_PATH "/tmp/ieee1905_tunnel"
 
 em_agent_t g_agent;
 const char *global_netid = "OneWifiMesh";
+#ifdef AL_SAP
 AlServiceAccessPoint* g_sap;
 MacAddress g_al_mac_sap;
+#endif
 
 void em_agent_t::handle_sta_list(em_bus_event_t *evt)
 {
